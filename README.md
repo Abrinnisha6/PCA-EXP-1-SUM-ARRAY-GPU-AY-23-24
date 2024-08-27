@@ -6,6 +6,7 @@
 <h3>DATE : 27.8.2024</h3>
 <h1> <align=center> SUM ARRAY ON HOST AND DEVICE :</h3>
 PCA-GPU-based-vector-summation.-Explore-the-differences.
+    
 i) Using the program sumArraysOnGPU-timer.cu, set the block.x = 1023. Recompile and run it. Compare the result with the execution configuration of block.x = 1024. Try to explain the difference and the reason.
 
 ii) Refer to sumArraysOnGPU-timer.cu, and let block.x = 256. Make a new kernel to let each thread handle two elements. Compare the results with other execution confi gurations.
@@ -238,7 +239,7 @@ int main(int argc, char **argv)
     CHECK(cudaMemcpy(d_C, gpuRef, nBytes, cudaMemcpyHostToDevice));
 
     // invoke kernel at host side
-    int iLen = 256;
+    int iLen = 512;
     dim3 block (iLen);
     dim3 grid  ((nElem + block.x - 1) / block.x);
 
@@ -272,6 +273,7 @@ int main(int argc, char **argv)
     return(0);
 }
 ```
+    
 
 ## OUTPUT :
 
